@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Default Parameters
 /* const bookings = [];
@@ -139,6 +139,7 @@ console.log(eurowings);
 
 book.call(lufthansa, ...clientData);
 console.log(lufthansa); */
+// ---------------------------------------------------------------------------------------------------
 
 // The bind Method
 /* const lufthansa = {
@@ -171,7 +172,7 @@ bookEW23('kartik');
 bookEW23('savaliya');
 console.log(eurowings);
 
-// with event listener
+// // with event listener
 lufthansa.planes = 300;
 lufthansa.buyPlane = function() {
     console.log(this);
@@ -203,8 +204,79 @@ console.log(addMyTax(0.23)(100)); */
 // ------------------------------------------------------------------------------------------
 
 // Immediately invoked function expression (IIFE)
-(function () {
+/* (function () {
     console.log(`This will never run again`);
     var isPrivate = 23;
 })();
+ 
+(() => console.log("hello ladva"))(); */
+// console.log(isPrivate);
 
+// ------------------------------------------------------------------------------------------
+
+// closures
+/* const secureBooking = function() {
+    let passengerCount = 0;
+    console.log('hello ladva');
+    return function () {
+        let num = 0;
+        passengerCount++;
+        console.log(`pass = ${passengerCount}`);
+
+        return function() {
+            num++;
+            console.log(`num = ${num}`);
+        }
+    }
+}
+
+const booker = secureBooking();
+const numBook = booker();
+booker();
+booker();
+booker();
+numBook();
+numBook();
+numBook();
+// secureBooking()()();
+console.dir(numBook); 
+// console.dir(booker);  */
+
+// More Closure Examples
+/* let f;
+
+const g = function() {
+    const a = 23;
+    f = function() {
+        console.log((a*2));
+    };
+}
+
+const h = function() {
+    const b = 50;
+    f = function() {
+        console.log((b*2));
+    };
+}
+g();
+f();
+console.dir(f);
+
+h();
+f();
+console.dir(f);
+
+// example 2 
+const boardPassengers = function(n, wait) {
+    const perGroup = n /3; 
+    setTimeout(() => {
+        console.log(`we are now bording all ${n} passenger`);
+        console.log(`There are a 3 groups, each with ${perGroup} passenger`);
+
+    }, wait * 1000);
+
+    console.log(`will start bording in ${wait} seconds`);
+};
+
+// const perGroup = 1000;
+boardPassengers(180, 3); */
